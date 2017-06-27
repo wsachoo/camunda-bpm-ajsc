@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bpm-config
+  namespace: com-att-pricerd
+  labels:
+   app: bpm 
+data:
+  config_env: DEV
+  logbackpath: /etc/config/logback.xml
+  dynamicpath: /etc/config/dynamic.properties  

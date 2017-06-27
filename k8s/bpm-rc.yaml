@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: bpm
+  namespace: com-att-pricerd
+spec:
+  replicas: 1
+  selector:
+    app: bpm
+  template:
+    metadata:
+      labels:
+        app: bpm
+    spec:
+      serviceAccount: default
+      containers:
+      - name: bpm
+        image: zlp11313.vci.att.com:5100/com.att.pricerd/bpm:latest
+        imagePullPolicy: Always
+        ports:
+         - containerPort: 8080
+        resources:
+          requests:
+            memory: "500Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        env:
+        - name: config_env
+          valueFrom:
+            configMapKeyRef:
+              name: bpm-config
+              key: config_env
+        - name: logging_config
+          valueFrom:
+            configMapKeyRef:
+              name: bpm-config
+              key: logbackpath        
+        - name: dynamic_file
+          valueFrom:
+            configMapKeyRef:
+              name: bpm-config
+              key: dynamicpath                     
