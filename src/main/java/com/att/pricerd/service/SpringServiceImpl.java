@@ -71,9 +71,22 @@ public class SpringServiceImpl implements SpringService {
 		BPMUtility bpm=new BPMUtilityImpl();
 		ProcessInstance processInstance=bpm.startEvent("call-microservice", offerMap);
 		
-		//runtimeService.startProcessInstanceByKey("call-microservice", offerMap);
 		
-		//String response1 = bpm.getVariables("call-microservice","callmicroservicevariable",processInstance.getId()); 
-		return "response1";
+		//ProcessInstance pi = runtimeService.startProcessInstanceByKey("forkJoin");
+	/*	TaskQuery query = taskService.createTaskQuery()
+		                         .processInstanceId(pi.getId())
+		                         .orderByTaskName()
+		                         .asc();
+
+		List<Task> tasks = query.list();
+		assertEquals(2, tasks.size());
+
+		Task task1 = tasks.get(0);
+		assertEquals("Receive Payment", task1.getName());
+		Task task2 = tasks.get(1);
+		assertEquals("Ship Order", task2.getName());*/
+		
+		String response1 = bpm.getVariables("call-microservice","callmicroservicevariable",processInstance.getId()); 
+		return response1;
 	}
 }

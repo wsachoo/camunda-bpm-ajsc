@@ -24,10 +24,10 @@
 		<service.account>default</service.account>
 		<namespace>com.att.pricerd</namespace>
 		<!-- Added Database properties -->
-		<database.url>jdbc:mysql://${MYSQL_SERVICE_HOST}:${MYSQL_SERVICE_PORT}/port</database.url>
-		<database.username>root</database.username>
-		<database.pwd>root</database.pwd>
-		<database.driver.classname>com.mysql.jdbc.Driver</database.driver.classname>	
+		<database.url>jdbc:oracle:thin:@zld00195.vci.att.com:1524:d1c1d672</database.url>
+		<database.username>sachcamunda</database.username>
+		<database.pwd>sachcamunda123</database.pwd>
+		<database.driver.classname>oracle.jdbc.driver.OracleDriver</database.driver.classname>
 		<!-- Added Database properties end -->	
 		<jsf.version>2.2.11</jsf.version>
 		<csi.logging>6.1.0.6</csi.logging>
