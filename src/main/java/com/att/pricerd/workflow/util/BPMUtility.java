@@ -12,7 +12,7 @@ public interface BPMUtility {
 	
 	
 
-	public void startEvent(String processId,Map<?, ?> variables);
+	public ProcessInstance startEvent(String processId,Map<?, ?> variables);
 	public ProcessInstance startEvent(String processId);
 	
 	public String getVariables(String processDefinitionKey,String variableName,String processInstanceId);

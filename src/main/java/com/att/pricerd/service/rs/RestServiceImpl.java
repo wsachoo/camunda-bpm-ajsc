@@ -1,6 +1,8 @@
 package com.att.pricerd.service.rs;
 
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -45,6 +47,13 @@ public class RestServiceImpl implements RestService {
 		log.debug("Inside printProductName :" + product);
 		log.info("Inside printProductName : " + product);
 		return product;
+	}
+	
+	@Override
+	public String getMicroserviceName(String product) {
+		log.debug("Inside callMicroservice :" + product);
+		log.info("Inside callMicroservice : " + product);
+		return service.getMicroserviceName(product);
 	}
 
 }

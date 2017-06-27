@@ -1,6 +1,11 @@
 package com.att.pricerd.service;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.runtime.ProcessInstance;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.att.ajsc.common.Tracable;
@@ -48,9 +53,27 @@ public class SpringServiceImpl implements SpringService {
 		log.info("getSampleResponse");
 		log.debug("getSampleResponse");
 		BPMUtility bpm=new BPMUtilityImpl();
-		ProcessInstance processInstance=bpm.startEvent("samplepoc");	
+		ProcessInstance processInstance=bpm.startEvent("samplepoc");
 		String response1 = bpm.getVariables("samplepoc","samplepocvariable",processInstance.getId()); 
 		return response1;
 		
+	}
+	
+	@Autowired
+	private RuntimeService runtimeService;
+	
+	@Override
+	public String getMicroserviceName(String offer) {
+		log.info("getSampleResponse");
+		log.debug("getSampleResponse");
+		Map<String, Object> offerMap = new HashMap<String, Object>();
+		offerMap.put("offer", offer);
+		BPMUtility bpm=new BPMUtilityImpl();
+		ProcessInstance processInstance=bpm.startEvent("call-microservice", offerMap);
+		
+		//runtimeService.startProcessInstanceByKey("call-microservice", offerMap);
+		
+		//String response1 = bpm.getVariables("call-microservice","callmicroservicevariable",processInstance.getId()); 
+		return "response1";
 	}
 }

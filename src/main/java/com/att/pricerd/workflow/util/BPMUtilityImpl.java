@@ -26,14 +26,15 @@ public class BPMUtilityImpl implements BPMUtility {
 	
 	
 	@Override
-	public  void startEvent(String processId, Map variables) {
+	public  ProcessInstance startEvent(String processId, Map variables) {
 		
 		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();		
 	  	 
-		processEngine.getRuntimeService().startProcessInstanceByKey(processId,variables);
+		return processEngine.getRuntimeService().startProcessInstanceByKey(processId,variables);
 		
 		
 	}
+
 	@Override
 	public  ProcessInstance startEvent(String processId) {
 		

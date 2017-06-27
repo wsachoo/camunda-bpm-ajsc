@@ -1,5 +1,7 @@
 package com.att.pricerd.service.rs;
 
+import java.util.Map;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -40,7 +42,7 @@ public interface RestService {
 	
 	
 	@GET
-	@Path("/offer")
+	@Path("/myOffer")
 	@Produces({ MediaType.APPLICATION_JSON })
 	@ApiOperation(value = "Respond Hello <name>!", notes = "Returns a JSON object with a string to say hello. "
 			+ "Uses 'world' if a name is not specified", response = HelloWorld.class)
@@ -48,5 +50,17 @@ public interface RestService {
 			@ApiResponse(code = 500, message = "Unexpected Runtime error") })
 	
 	public String printProductName(@QueryParam("product") String product);
+	
+	
+	
+	@GET
+	@Path("/offer")
+	@Produces({ MediaType.APPLICATION_JSON })
+	@ApiOperation(value = "Respond Hello <name>!", notes = "Returns a JSON object with a string to say hello. "
+			+ "Uses 'world' if a name is not specified", response = HelloWorld.class)
+	@ApiResponses(value = { @ApiResponse(code = 404, message = "Service not available"),
+			@ApiResponse(code = 500, message = "Unexpected Runtime error") })
+	
+	public String getMicroserviceName(@QueryParam("product") String product);
 	
 }
